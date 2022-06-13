@@ -27,6 +27,7 @@ struct cloudBooking
 struct cloudDetail storage[100];
 struct cloudDiscount discount[100];
 struct cloudBooking booking[100];
+struct cloudDiscount gold;
 
 int storageIndex = 0;
 int discountIndex = 0;
@@ -42,11 +43,44 @@ void addCloudStorage()
     printf("%s", "Enter the availabel storage");
     scanf("%f", &storage[storageIndex].cloudPrice);
     storageIndex++;
-    printf("%s","\nAdded\n");
+    printf("%s", "\nAdded\n");
 }
 
-void modifyCloudStorage(){
-
+void modifyCloudStorage()
+{
+    int option = 0;
+    if (storageIndex == 0)
+    {
+        printf("%s", "No Existing cloud details to modify");
+    }
+    else
+    {
+        printf("%s", "Enter cloud detail number to modify");
+        for (int i = 0; i < storageIndex; i++)
+        {
+            printf("%s", "cloud detail 1");
+            printf("%s", storage[i].cloudType);
+            printf("%f", storage[i].cloudPrice);
+            printf("%f", storage[i].availabelStorage);
+        }
+        scanf("%d", &option);
+        if (option >= storageIndex)
+        {
+            printf("%s", "No clud detail available");
+        }
+        else
+        {
+            printf("%s", "Enter the new Storage details");
+            printf("%s", "Enter cloud Type");
+            scanf("%s", &storage[option].cloudType);
+            printf("%s", "Enter the availabel storage");
+            scanf("%f", &storage[option].availabelStorage);
+            printf("%s", "Enter the availabel storage");
+            scanf("%f", &storage[option].cloudPrice);
+            printf("%s", "\nAdded\n");
+        }
+        printf("%s", "Details modified sucessfully");
+    }
 }
 
 // add or modify
@@ -62,21 +96,58 @@ void chooseAddOrModifyCloudStorage()
     }
     else
     {
-        // modifyCloudStorage();
+        modifyCloudStorage();
     }
 }
 
-void addCloudDiscount(){
+void addCloudDiscount()
+{
     printf("%s", "Enter the Cloud Discount details");
     printf("%s", "Enter Customer Category");
     scanf("%s", &discount[discountIndex].customerCategory);
     printf("%s", "Enter the discount price");
     scanf("%f", &discount[discountIndex].discountPrice);
-    printf("%s","\nAdded\n");
+    printf("%s", "\nAdded\n");
     discountIndex++;
 }
 
-void chooseAddOrModifyCloudDiscount(){
+void modifyCloudDiscount()
+{
+    int option = 0;
+    if (discountIndex == 0)
+    {
+        printf("%s", "No Existing cloud Discount to modify");
+    }
+    else
+    {
+        printf("%s", "Enter cloud discount detail number to modify");
+        for (int i = 0; i < discountIndex; i++)
+        {
+            printf("%s", "cloud discount detail ");
+            printf("%d", i);
+            printf("%s", discount[i].customerCategory);
+            printf("%f", discount[i].discountPrice);
+        }
+        scanf("%d", &option);
+        if (option >= discountIndex)
+        {
+            printf("%s", "No clud discount detail available");
+        }
+        else
+        {
+            printf("%s", "Enter the new discount details");
+            printf("%s", "Enter cloud category Type");
+            scanf("%s", &discount[option].customerCategory);
+            printf("%s", "Enter the discount price");
+            scanf("%f", &discount[option].discountPrice);
+
+            printf("%s", "details modified\n");
+        }
+    }
+}
+
+void chooseAddOrModifyCloudDiscount()
+{
     int option;
     printf("%s", "1. Add Cloud Discount\n");
     printf("%s", "2. Modify Cloud Discount\n");
@@ -91,21 +162,21 @@ void chooseAddOrModifyCloudDiscount(){
     }
 }
 
-void findCategory(){
-    
-}
-
-void bookStorage(){
-    printf("%s","Enter Detils")
-    printf("%s","Customer Name");
-    scanf("%s",&booking[bookingIndex].customerName);
-    printf("%s","cloud Type");
-    scanf("%s",&booking[bookingIndex].type);
-    printf("%s","Required Storage");
-    scanf("%f",&booking[bookingIndex].requiredStorage);
-    printf("%s","Required BandWidth");
-    scanf("%f",&booking[bookingIndex].requiredBandWidth);
-    
+void bookStorage()
+{
+    float requiredStorage;
+    float requiredBandWidth;
+    printf("%s", "Enter Detils");
+    printf("%s", "Customer Name");
+    scanf("%s", &booking[bookingIndex].customerName);
+    printf("%s", "cloud Type");
+    scanf("%s", &booking[bookingIndex].type);
+    printf("%s", "Required Storage");
+    scanf("%f", &booking[bookingIndex].requiredStorage);
+    requiredStorage = booking[bookingIndex].requiredStorage
+                          printf("%s", "Required BandWidth");
+    scanf("%f", &booking[bookingIndex].requiredBandWidth);
+    requiredBandWidth = booking[bookingIndex].requiredBandWidth;
 }
 
 void chooseOption()
